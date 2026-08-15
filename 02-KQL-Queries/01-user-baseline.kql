@@ -1,0 +1,7 @@
+// 01 - User Activity Baseline
+// Purpose: Identify Daniel's normal sign-in locations.
+
+CloudoraSignIn_CL
+| where UserPrincipalName == "daniel.reeve@cloudora.io"
+| summarize Count=count() by Location
+| sort by Count desc
