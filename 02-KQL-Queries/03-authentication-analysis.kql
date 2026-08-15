@@ -1,0 +1,14 @@
+// 03 - Authentication Analysis
+// Purpose: Compare failed and successful authentication activity.
+
+CloudoraSignIn_CL
+| where UserPrincipalName == "daniel.reeve@cloudora.io"
+| where Location == "Lagos"
+| project TimeGenerated,
+          IPAddress,
+          ResultType,
+          ResultDescription,
+          AuthenticationRequirement,
+          MfaResult,
+          ConditionalAccessStatus
+| sort by TimeGenerated asc
