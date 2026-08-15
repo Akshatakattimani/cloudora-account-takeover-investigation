@@ -1,0 +1,8 @@
+// 05 - Device and IP Investigation
+// Purpose: Determine which users, locations, and IPs are associated
+// with the suspicious device.
+
+CloudoraSignIn_CL
+| where DeviceId == "DEV-ATTACK01"
+| summarize Count=count() by UserPrincipalName, Location, IPAddress
+| sort by Count desc
