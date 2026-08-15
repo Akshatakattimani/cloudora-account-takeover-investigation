@@ -1,0 +1,8 @@
+// 02 - Lagos Sign-in Investigation
+// Purpose: Investigate suspicious sign-ins from Lagos.
+
+CloudoraSignIn_CL
+| where UserPrincipalName == "daniel.reeve@cloudora.io"
+| where Location == "Lagos"
+| project TimeGenerated, IPAddress, ResultType, ResultDescription
+| sort by TimeGenerated asc
