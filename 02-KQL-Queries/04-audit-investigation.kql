@@ -1,0 +1,14 @@
+// 04 - Audit Log Investigation
+// Purpose: Correlate sensitive actions after successful authentication.
+
+CloudoraAudit_CL
+| where InitiatedBy == "daniel.reeve@cloudora.io"
+| where TimeGenerated between
+    (datetime(2026-08-08 03:07:00) .. datetime(2026-08-08 03:40:00))
+| project TimeGenerated,
+          IPAddress,
+          ActivityDisplayName,
+          Result,
+          TargetResource,
+          ResultReason
+| sort by TimeGenerated asc
